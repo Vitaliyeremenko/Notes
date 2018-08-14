@@ -16,7 +16,7 @@ class Logout extends Component {
 }
 
 const mapDispatchToProps = dispatch => {
-    return {logout: () => dispatch(actions.logout)};
+    return {logout: () => dispatch(actions.logout())};
 }
 
 export default withRouter(connect(null,mapDispatchToProps)(Logout));

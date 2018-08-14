@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {withRouter} from 'react-router-dom';
+import {withRouter,Redirect} from 'react-router-dom';
 
 import NotesList from '../../components/NotesList/NotesList'
 import Aux from '../../hoc/Auxiliary/Auxiliary';
@@ -70,9 +70,10 @@ class Notes extends Component {
     }
 
     render() {
-
+        console.log(this.props.auth.token,'token');
         return (
             <Aux>
+                {!this.props.auth.token ? <Redirect to="auth" /> : null}
                 <NoteContols
                      newNote={this.newNoteHandler}
                      deleteNote={this.deleteNoteHandler}
