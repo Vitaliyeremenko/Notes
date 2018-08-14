@@ -35,6 +35,7 @@ class Notes extends Component {
     }
 
     deleteNoteHandler = () => {
+        console.log(this.state.currentNoteKey);
         if(this.state.currentNoteKey){
             this.props.deleteNote(this.state.currentNote.id,this.props.auth);
         }       
