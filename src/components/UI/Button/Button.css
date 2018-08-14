@@ -1,0 +1,35 @@
+.Button {
+    height: 53px;
+    width: 90px;
+    border-radius: 3px;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 19px;
+    color: #403F3F;
+    border: none;
+    background: none;
+    cursor: pointer
+}
+
+.Active { 
+    background-color: #403F3F;
+    box-shadow: 0 2px 12px 0 rgba(71,61,61,0.1);
+    color: white
+}
+
+.Control {
+    color: #B5BABD;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    width: auto;
+    margin-right: 70px
+}
+
+.Control img{
+    margin-right: 15px
+}

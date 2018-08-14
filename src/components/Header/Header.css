@@ -1,0 +1,74 @@
+.Header{
+    height: 64px;
+}
+
+.Header > div {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.Header > div span {
+    color: #6C757C;
+    font-family: Roboto;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 36px;
+    text-transform: uppercase;
+}
+
+.Header > div div {
+    position: relative;
+}
+
+.Header p{
+    position: relative;
+    color: #616161;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 16px;
+    text-align: center;
+    padding: 0 20px 0 0
+}
+.HeaderSelectArrow{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.HeaderSelectArrowReverse{
+    transform: translateY(-50%) rotate(0deg);
+}
+
+.Header > div div > ul {
+    width: 130px;
+    padding: 5px 21px;
+    border-radius: 3px;
+    background-color: #403F3F;
+    box-shadow: 0 2px 12px 0 rgba(71,61,61,0.1);
+    box-sizing: border-box;
+    position: absolute;
+    left: 50%;
+    top: 33px;
+    transform: translateX(-50%) ;
+    z-index: 2;
+}
+
+.Header > div div > ul li {
+    color: #FFFFFF;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 19px;
+    padding: 7px 0
+}
+
+.Header > div div > ul li a{
+    color: #FFFFFF;
+    text-decoration: none;
+}

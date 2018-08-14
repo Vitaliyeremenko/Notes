@@ -1,0 +1,10 @@
+.NotesList{
+    background: white;
+    width: 100%;
+    max-width: 395px;
+    box-shadow: 4px 2px 12px -4px rgba(71,61,61,0.1);
+    margin-right: 70px;
+    padding-top: 32px;
+    min-height: 90vh;
+}
+

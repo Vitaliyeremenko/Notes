@@ -1,0 +1,30 @@
+.Form{
+	box-sizing: border-box;
+	width: 413px;
+	background-color: #FFFFFF;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+    padding: 60px 80px 70px 80px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%) 
+}
+
+.Buttons{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 54px
+}
+
+.SignIn{
+    margin-bottom: 28px;
+  }
+.Error{
+    color: #FF7275;
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 14px;
+    text-align: right;
+}

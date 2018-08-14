@@ -1,0 +1,50 @@
+.Item{
+    padding: 17px;
+    border-bottom: 1px solid #B6BABD;
+    position: relative;
+    cursor: pointer;
+}
+.Title{
+    color: #403F3F;
+	font-family: Roboto;
+	font-size: 20px;
+	font-weight: bold;
+    line-height: 24px;
+    margin: 0 0 5px
+}
+
+.TitleDue{
+    color: #6C757C;
+    text-decoration: line-through;
+}
+
+.Text{
+    color: #6C757C;
+	font-family: Roboto;
+	font-size: 14px;
+	font-weight: bold;
+    line-height: 16px;
+    text-transform: uppercase;
+    margin: 0
+}
+
+.TextDue{
+    color: #B5BABD;
+    text-decoration: line-through;
+}
+
+.DueDate{
+    color: #FF7275;
+	font-family: Roboto;
+	font-size: 16px;
+	font-weight: 500;
+    line-height: 19px;
+    position: absolute;
+    bottom: 13px;
+    right: 17px;
+    margin: 0
+}
+
+
+
+	

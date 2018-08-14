@@ -1,0 +1,116 @@
+.Input {
+    width: 100%;
+    box-sizing: border-box;
+    
+}
+
+.Label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.InputElement {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #B5BABD;
+    background-color: white;
+    font: Roboto;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 19px;
+    padding: 6px 10px;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.InputElement::-webkit-input-placeholder {
+    color: #B5BABD;
+  }
+  .InputElement::-moz-placeholder { 
+    color: #B5BABD;
+  }
+  .InputElement:-ms-input-placeholder { 
+    color: #B5BABD;
+  }
+  .InputElement:-moz-placeholder {
+    color: #B5BABD;
+  }
+
+.InputElement:focus {
+    outline: none
+}
+
+.Invalid {
+    border: 1px solid red;
+    background-color: #FDA49A;
+}
+
+.Search{
+    padding: 5px 5px 5px 30px;
+    position: relative;
+    color: #B5BABD;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 19px;
+}
+
+.Title{
+    color: #403F3F;
+    font-family: Roboto;
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 42px;
+    margin-bottom: 28px;
+    background:transparent;
+}
+
+.Title::-webkit-input-placeholder { 
+    color: #B5BABD;
+    font-weight: 300;
+  }
+  .Title::-moz-placeholder { 
+    color: #B5BABD;
+    font-weight: 300;
+  }
+  .Title:-ms-input-placeholder { 
+    color: #B5BABD;
+    font-weight: 300;
+  }
+  .Title:-moz-placeholder { 
+    color: #B5BABD;
+    font-weight: 300;
+  }
+
+.Text{
+    color: #6C757C;;
+    font-family: Roboto;
+    margin-bottom: 28px;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 28px;
+    resize: none;
+    overflow: hidden;
+    background:transparent;
+    height: 40px;
+}
+
+.Text::-webkit-input-placeholder { 
+    color: #B5BABD;
+    font-weight: 300;
+  }
+  .Text::-moz-placeholder { 
+    color: #B5BABD;
+    font-weight: 300;
+  }
+  .Text:-ms-input-placeholder { 
+    color: #B5BABD;
+    font-weight: 300;
+  }
+  .Text:-moz-placeholder { 
+    color: #B5BABD;
+    font-weight: 300;
+  }
+
