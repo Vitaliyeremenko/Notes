@@ -32,7 +32,8 @@
     font-weight: bold;
     line-height: 16px;
     text-align: center;
-    padding: 0 20px 0 0
+    padding: 0 20px 0 0;
+    cursor: pointer;
 }
 .HeaderSelectArrow{
     position: absolute;

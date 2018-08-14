@@ -68,11 +68,11 @@ const noteControls = (props) => {
                 <div className={[classes.Control,classes.Due].join(' ')}>
                     <img src={dueImage} alt="due"/>
                     Due Date
-                    {props.dueDate ? <DatePicker 
-                        selected={moment(props.dueDate)} 
+                     <DatePicker 
+                        selected={props.dueDate ? moment(props.dueDate)  : null} 
                         onChange={(date) => props.dueChange(date.format("YYYY-MM-DD"))}
                         dateFormat="DD.MM.YYYY"
-                /> : null}
+                    />
                 </div>
                 
             </div>

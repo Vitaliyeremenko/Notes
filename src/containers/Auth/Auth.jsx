@@ -69,9 +69,11 @@ class Auth extends Component {
                 },
                 valid: false,
                 touched: false
-            }
+            },
             
-        } 
+            
+        },
+        errorMessage: ''
     }
 
     checkValidity(value, rules) {
@@ -106,6 +108,7 @@ class Auth extends Component {
             isValid = value === this.state.controls[rules.similarTo].value  && isValid
         }
 
+        
         return isValid;
     }
 
@@ -124,25 +127,63 @@ class Auth extends Component {
 
     signInHandler = (e) => {
         e.preventDefault();
-        this.props.onSignIn(
-            this.state.controls.email.value,
-            this.state.controls.password.value.toString(),
-        )
+        if(this.checkSubmitable()){
+            this.props.onSignIn(
+                this.state.controls.email.value,
+                this.state.controls.password.value.toString(),
+            )
+        }
+        
+        
+    }
+    
+    checkSubmitable = () => {
+        let output = 
+                this.state.controls.email.value &&
+                this.state.controls.email.valid &&
+                this.state.controls.password.value &&
+                this.state.controls.password.valid;
+        if(!this.state.signin)
+            output = output &&
+                this.state.controls.confirm.value &&
+                this.state.controls.confirm.valid &&
+                this.state.controls.name.value &&
+                this.state.controls.name.valid ;
+        if(!output){
+            this.setState({
+                error: 'Please fill all fields correct'
+            })
+        }
+        return output;
     }
 
     signUpHandler = (e) => {
         e.preventDefault();
-        this.props.onSignUp(
-            this.state.controls.name.value,
-            this.state.controls.email.value,
-            this.state.controls.password.value.toString(),
-            this.state.controls.confirm.value.toString(),
-        )
+        
+        if(this.checkSubmitable()){
+            this.props.onSignUp(
+                this.state.controls.name.value,
+                this.state.controls.email.value,
+                this.state.controls.password.value.toString(),
+                this.state.controls.confirm.value.toString(),
+            )
+        }
     }
 
     signInSwitch = (e) => {
         e.preventDefault();
-        this.setState({...this.state, signin: !this.state.signin});
+        this.setState(
+            {...this.state, 
+                signin: !this.state.signin,
+                controls: {
+                    ...this.state.controls,
+                    name : { ...this.state.controls.name, value: ''},
+                    email: { ...this.state.controls.email, value: ''},
+                    password: { ...this.state.controls.password, value: ''},
+                    confirm: { ...this.state.controls.confirm, value: ''}
+                },
+                error: ''
+            });
         this.props.setHeader(!this.state.signin ? 'sign in' : 'sign up' );
     }
 
@@ -189,21 +230,34 @@ class Auth extends Component {
                
         ))
 
+
+
+        
+        let render = (
+                <div>
+                    {this.state.error ? <p className={classes.Error}>{this.state.error}</p> : null}
+                    {formInputs}
+                    <div className={classes.Buttons}>
+                        <Button
+                            btnType = { this.state.signin ? 'Active' : null}
+                            clicked = { this.state.signin ? this.signInHandler : this.signInSwitch}
+                        >Sign In</Button>
+                        <Button
+                            btnType = { this.state.signin ? null : 'Active'}
+                            clicked = { this.state.signin ? this.signInSwitch : this.signUpHandler}
+                        >Sigh Up</Button>
+                    </div>
+                </div>
+        )
+
+        if (this.props.loading){
+            render = <Spinner/>
+        }
+
         return (
             <form className={classes.Form}>
                 { this.props.token ? <Redirect to="/" /> : null}
-                {this.props.loading ? <Spinner/> : null}
-                {formInputs}
-                <div className={classes.Buttons}>
-                    <Button
-                        btnType = { this.state.signin ? 'Active' : null}
-                        clicked = { this.state.signin ? this.signInHandler : this.signInSwitch}
-                    >Sign In</Button>
-                    <Button
-                        btnType = { this.state.signin ? null : 'Active'}
-                        clicked = { this.state.signin ? this.signInSwitch : this.signUpHandler}
-                    >Sigh Up</Button>
-                </div>
+                {render}
             </form> 
 
         );
@@ -213,8 +267,8 @@ class Auth extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onSignUp : (name,email,password,password_confirmation) => dispatch(actions.signUp(name,email,password,password_confirmation)),
-        onSignIn : (email, password) => dispatch(actions.signIn(email, password)),
+        onSignUp  : (name,email,password,password_confirmation) => dispatch(actions.signUp(name,email,password,password_confirmation)),
+        onSignIn  : (email, password) => dispatch(actions.signIn(email, password)),
         setHeader : (header) => dispatch(actions.setHeader(header))
     }
 }

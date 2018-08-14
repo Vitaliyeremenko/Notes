@@ -10,5 +10,6 @@ export {
     updateNoteLocal,
     updateNote,
     createNote,
-    deleteNote
+    deleteNote,
+    newNoteAdded
 } from './notes'

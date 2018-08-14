@@ -185,6 +185,7 @@ export const deleteNoteFail = (error) => {
 }
 
 export const deleteNote = (noteId, auth) => {
+    console.log(noteId, auth);
     return dispatch => {
         dispatch(deleteNoteStart());
 
@@ -203,5 +204,11 @@ export const deleteNote = (noteId, auth) => {
             .catch(err => {
                 dispatch(deleteNoteFail(err));
             })
+    }
+}
+
+export const newNoteAdded = () => {
+    return {
+        type: actionTypes.NEW_NOTE_ADDED
     }
 }

@@ -2,26 +2,32 @@ import * as actionTypes from '../actions/actionsTypes';
 
 const initialState = {
     notes: [],
-    error: null
+    error: null,
+    loadingList: false,
+    loadingNewNote: false, 
+    newNote: false
 }
 
 const reducer = (state = initialState, action) => {
     switch(action.type){
         case actionTypes.GET_ALL_NOTES_START : {
             return {
-                ...state
+                ...state,
+                loadingList: true
             }
         }
         case actionTypes.GET_ALL_NOTES_SUCCESS : {
             return {
                 ...state,
-                notes: action.notes
+                notes: action.notes,
+                loadingList: false
             }
         }
         case actionTypes.GET_ALL_NOTES_FAIL : {
             return {
                 ...state,
-                error: action.error
+                error: action.error,
+                loadingList: false
             }
         }
         case actionTypes.UPDATE_NOTE_LOCAL : {
@@ -52,7 +58,9 @@ const reducer = (state = initialState, action) => {
         }
         case actionTypes.CREATE_NOTE_START : {
             return {
-                ...state
+                ...state,
+                loadingList: true,
+                loadingNewNote: true
             }
         }
         case actionTypes.CREATE_NOTE_SUCCESS : {
@@ -60,18 +68,24 @@ const reducer = (state = initialState, action) => {
             newNotes.unshift(action.newNote);
             return {
                 ...state,
-                notes: newNotes
+                notes: newNotes,
+                loadingList: false,
+                loadingNewNote: false,
+                newNote : true
             }
         }
         case actionTypes.CREATE_NOTE_FAIL : {
             return {
                 ...state,
-                error: action.error
+                error: action.error,
+                loadingList: false,
+                loadingNewNote: false
             }
         }
         case actionTypes.DELETE_NOTE_START : {
             return {
-                ...state
+                ...state,
+                loadingList: true,
             }
         }
         case actionTypes.DELETE_NOTE_SUCCESS : {
@@ -79,13 +93,20 @@ const reducer = (state = initialState, action) => {
             
             return {
                 ...state,
-                notes: newNotes
+                notes: newNotes,
+                loadingList: false,
             }
         }
         case actionTypes.DELETE_NOTE_FAIL : {
             return {
                 ...state,
                 error: action.error
+            }
+        }
+        case actionTypes.NEW_NOTE_ADDED : {
+            return {
+                ...state,
+                newNote: false
             }
         }
         default: 

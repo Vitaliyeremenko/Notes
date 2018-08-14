@@ -77,7 +77,8 @@ const reducer = (state = initialState, action) => {
         case actionTypes.SET_HEADER: {
             return {
                 ...state,
-                header: action.header
+                header: action.header,
+                error: null
             }
         }
         case actionTypes.LOGOUT: {

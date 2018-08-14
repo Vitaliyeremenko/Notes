@@ -18,6 +18,17 @@ class Notes extends Component {
         currentNoteKey: null,
         sortedBy: "All"
     }
+
+    componentDidUpdate(){
+        if(this.props.newNote){
+            this.setState({
+                currentNote: this.props.notes[0],
+                currentNoteKey: 0
+            });
+            this.props.newNoteAdded();
+        }
+    }
+
     componentWillMount(){
         this.props.getNotes(this.props.auth,'');
         this.props.setHeader();
@@ -35,9 +46,9 @@ class Notes extends Component {
     }
 
     deleteNoteHandler = () => {
-        console.log(this.state.currentNoteKey);
-        if(this.state.currentNoteKey){
+        if(this.state.currentNoteKey !== null){
             this.props.deleteNote(this.state.currentNote.id,this.props.auth);
+            this.setState({ currentNote: null, currentNoteKey: null});
         }       
     }
 
@@ -90,6 +101,7 @@ class Notes extends Component {
                         notes = {this.props.notes}
                         choosed = {this.chooseNoteHandler}
                         sortedBy = {this.state.sortedBy}
+                        loading = {this.props.loadingList}
                     />
                      : null}
                     
@@ -100,6 +112,7 @@ class Notes extends Component {
                         textChanged={this.changeTextHandler}
                         changed={this.changeNoteHandler}
                         focusout={this.blurCurrentNoteHandler}
+                        loadingNewNote = {this.props.loadingNewNote}
                     /> : null}
                 </div>
             </Aux>
@@ -110,7 +123,10 @@ class Notes extends Component {
 const mapStateToProps = state =>{
     return {
         notes: state.notes.notes,
-        auth: state.auth
+        auth: state.auth,
+        loadingList:  state.notes.loadingList,
+        loadingNewNote:  state.notes.loadingNewNote,
+        newNote: state.notes.newNote
     }
 }
 
@@ -121,7 +137,8 @@ const mapDispatchToProps = dispatch =>{
         updateNote:      (note,auth) => dispatch(actions.updateNote(note,auth)),
         createNote:      (auth) => dispatch(actions.createNote(auth)),
         deleteNote:      (noteId, auth) => dispatch(actions.deleteNote(noteId,auth)),
-        setHeader:       () => dispatch(actions.setHeader('notes'))
+        setHeader:       () => dispatch(actions.setHeader('notes')),
+        newNoteAdded:      () => dispatch(actions.newNoteAdded())
     }
 }
 

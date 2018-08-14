@@ -29,3 +29,5 @@ export const DELETE_NOTE_FAIL    = "DELETE_NOTE_FAIL";
 export const SET_HEADER = "SET_HEADER";
 
 export const LOGOUT = "LOGOUT";
+
+export const NEW_NOTE_ADDED = "NEW_NOTE_ADDED"

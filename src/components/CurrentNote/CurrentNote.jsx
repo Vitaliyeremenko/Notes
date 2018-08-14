@@ -2,13 +2,15 @@ import React from 'react';
 
 import Input from '../UI/Input/Input';
 import Textrea from '../UI/Input/Textarea';
+import Aux from '../../hoc/Auxiliary/Auxiliary';
 import classes from './CurrentNote.css';
+import Spinner from '../../components/UI/Spinner/Spinner';
 
 export const currentNote = (props) => {
 
-    return (
-      <div className={classes.CurrentNote}>
-          <Input 
+    let render = (
+        <Aux>
+            <Input 
             elementType="input"
             elementConfig={{
                 type: 'text',
@@ -19,7 +21,7 @@ export const currentNote = (props) => {
             focusout = {props.focusout}
             classes= {['Title']}
             />
-          <Textrea 
+        <Textrea 
             elementConfig={{
                 placeholder: 'Details',
                 id: 'texarea'
@@ -29,6 +31,16 @@ export const currentNote = (props) => {
             focusout = {props.focusout}
             classes= {['Text']}
             />
+        </Aux>
+    );
+
+    if(props.loadingNewNote){
+        render= <Spinner/>;
+    }
+
+    return (
+      <div className={classes.CurrentNote}>
+         {render}
       </div>
     )
 }

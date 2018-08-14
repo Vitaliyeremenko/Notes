@@ -1,5 +1,7 @@
 import React from 'react';
+
 import NotesListItem from './NotesListItem/NotesListItem';
+import Spinner from '../../components/UI/Spinner/Spinner';
 
 import classes from './NotesList.css';
 
@@ -28,9 +30,20 @@ const notesList = (props) => {
         )
     })
 
+    if(props.notes.length < 1){
+        notesToRender = <p>Ooops...  You havn`t any items</p>
+    }
+
+    if(props.loading){
+        notesToRender = <Spinner />
+    }
+
+
+
+
     return (
         <div className={classes.NotesList}>
-            {props.notes.length < 1 ? null : notesToRender}
+            {notesToRender}
         </div>
     )
 }
