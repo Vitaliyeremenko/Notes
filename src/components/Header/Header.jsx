@@ -14,23 +14,21 @@ class Header extends Component  {
     }
 
     render(){
-        let arrowClasses = this.state.showList ? [classes.HeaderSelectArrow,classes.HeaderSelectArrowReverse] : [classes.HeaderSelectArrow];
+        const { HeaderSelectArrow, HeaderSelectArrowReverse, Header } = classes;
+        const { showList } = this.state;
+        const { header, name } = this.props;
+
         return (
-            <header className={classes.Header}>
+            <header className={Header}>
                 <div>
-                    <span>{this.props.header}</span>
-                    {this.props.name ? <div>
-                        <p onClick={this.toogleList}>{this.props.name}
-                         <img 
-                            className={arrowClasses.join(' ')}
-                            src={arrow}
-                            alt="arrow"
-                            />
-                            </p>
-                        {this.state.showList ?<ul>
-                            <li><NavLink to="/logout" exact>Logout</NavLink></li>
-                        </ul>: null}
-                    </div>: null}
+                    <span>{header}</span>
+                    {name && (
+                    <div>
+                        <p onClick={this.toogleList}>{name}
+                            <img className={`${HeaderSelectArrow} ${showList && HeaderSelectArrowReverse}`} src={arrow} alt="arrow" />
+                        </p>
+                        {showList && <ul><li><NavLink to="/logout" exact>Logout</NavLink></li></ul>}
+                    </div>)}
                 </div>
             </header>
         )

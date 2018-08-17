@@ -7,8 +7,10 @@ import Aux from '../../hoc/Auxiliary/Auxiliary';
 import NoteContols from '../../components/NoteControls/NoteControls';
 import CurrentNote from '../../components/CurrentNote/CurrentNote';
 import * as actions from '../../store/actions';
+import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
 import classes from './Notes.css';
+import axios from '../../axios-instance';
 
 
 class Notes extends Component {
@@ -142,4 +144,4 @@ const mapDispatchToProps = dispatch =>{
     }
 }
 
-export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Notes));
+export default withErrorHandler(withRouter(connect(mapStateToProps,mapDispatchToProps)(Notes)),axios);
